@@ -16,11 +16,11 @@ public class OrphanageService {
 	@Inject OrphanageRepository orphanageRepository;
 
 	public List<Orphanage> listOrphanages() {
-		return orphanageRepository.listOrphanages();
+		return orphanageRepository.listAll();
 	}
 
 	public void createOrphanage(Orphanage orphanage) {
-		orphanageRepository.createOrphanage(orphanage);
+		orphanage.persist();
 	}
     
 }

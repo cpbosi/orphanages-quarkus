@@ -1,20 +1,18 @@
 package com.cpbosi.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 /**
  * Orphanage
  */
 @Entity
-public class Orphanage {
+public class Orphanage extends PanacheEntity {
 
-    @Id
-    private Long id;
     private String name;
 
     public Orphanage() {
-    
     }
 
     public Orphanage(Long id, String name) {
@@ -22,12 +20,8 @@ public class Orphanage {
         this.name = name;
     }
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id){
-        this.id = id;
+    public Orphanage(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -37,5 +31,4 @@ public class Orphanage {
     public void setName(String name) {
         this.name = name;
     }
-    
 }
