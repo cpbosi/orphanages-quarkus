@@ -1,0 +1,1 @@
+insert into orphanage(id, name) values (993, 'Creche e Orfanato Vinde a Mim as Criancinhas');

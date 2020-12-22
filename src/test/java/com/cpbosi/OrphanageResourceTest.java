@@ -1,7 +1,6 @@
 package com.cpbosi;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
 
 import com.cpbosi.dto.CreateOrphanageDTO;
 
