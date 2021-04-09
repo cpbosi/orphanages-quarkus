@@ -1,0 +1,33 @@
+version: '3'
+services:
+  orphanages-api:
+    image: orphanages-api
+    depends_on:
+      - postgres-bd
+    ports:
+      - 8080:8080
+    restart: always
+    environment:
+      - quarkus.swagger-ui.always-include=true
+      - quarkus.http.port=8080
+      - quarkus.datasource.db-kind=postgresql
+      - quarkus.datasource.username=postgres
+      - quarkus.datasource.password=password
+      - quarkus.datasource.jdbc.url=jdbc:postgresql://postgres-bd:5432/hero
+      - quarkus.datasource.jdbc.max-size=5
+      - quarkus.datasource.jdbc.driver=org.postgresql.Driver
+      - quarkus.hibernate-orm.database.charset=UTF8
+      - quarkus.hibernate-orm.database.generation=none
+  postgres-bd:
+    container_name: postgres-bd
+    image: postgres:alpine
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_DB: 'hero'
+      PGDATA: /data/postgres
+    volumes:
+    - "./data/postgres:/var/lib/postgresql/data"
